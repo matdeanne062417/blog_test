@@ -1,0 +1,29 @@
+<h1>Category</h1>
+<table class = "content">
+    <thead>
+        <tr>
+            <th><h6>ID</h6></th>
+            <th><h2>Name</h2></th>
+            <th><h2>Description</h2></th>
+            <th><h2> </h2></th>
+            <th><h2> </h2></th>
+            <th><h2> </h2></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <%# iterate %>
+        <%@categories.each do |category| %>
+            <tr>
+                <%# print %>
+                <td id = "category-id"><%= category.id %></td>
+                <td id = "category-name"><b><%= category.name %></b></td>
+                <td id = "category-body"><%= category.description %></td>
+                <td><%= link_to 'Edit', edit_category_path(category.id) %></td>
+                <td><%= link_to 'Show',show_category_path(category.id) %></td>
+                <td><%= link_to 'Delete', delete_category_path(category.id), data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= link_to 'Create New Category',new_category_path %>

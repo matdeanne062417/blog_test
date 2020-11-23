@@ -1,0 +1,14 @@
+<h1><%= @category.name %></h1>
+            
+<%# print %>
+<p class = "content">
+
+    <%= @category.description %>
+
+</p>
+
+<div class = "btn-links">
+    <%= link_to 'Edit', edit_category_path(@category.id) %>
+    <%= link_to 'Delete', delete_category_path(@category.id), data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Back to Category',categories_path %>
+</div>
