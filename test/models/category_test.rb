@@ -10,6 +10,11 @@ class CategoryTest < ActiveSupport::TestCase
     assert_not category.save
   end
 
+  test "description is required" do
+    category = Category.create(name: "Example")
+    assert_not category.save
+  end
+
  
   test "name should be unique" do
     category = Category.create(name: "Example")
@@ -17,8 +22,8 @@ class CategoryTest < ActiveSupport::TestCase
     assert_not duplicate_category.valid?
   end
 
-  test "name should be saved with name and body" do
+  test "category should be saved with name and body" do
     category = Category.create(name: "Mat", description: "sample only")
-    assert category.save
+    assert_not category.save
   end
 end
