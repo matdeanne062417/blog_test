@@ -24,6 +24,6 @@ class CategoryTest < ActiveSupport::TestCase
 
   test "category should be saved with name and body" do
     category = Category.create(name: "Mat", description: "sample only")
-    assert_not category.save
+    assert category.save
   end
 end

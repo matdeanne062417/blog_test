@@ -1,0 +1,17 @@
+<h1><%= @task.name %></h1>
+            
+<%# print %>
+<p class = "content">
+
+    <%= @task.details %>
+    <%= @task.deadline %>
+    <%= @task.started_at %>
+    <%= @task.completed_at %>
+
+</p>
+
+<div class = "btn-links">
+    <%= link_to 'Edit', edit_task_path(@task.id) %>
+    <%= link_to 'Delete', delete_task_path(@task.id), data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Back to Task',tasks_path %>
+</div>
