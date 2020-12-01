@@ -3,4 +3,6 @@ class Task < ApplicationRecord
                     uniqueness: true
 
     validates :details, presence: true
+
+    belongs_to :category
 end

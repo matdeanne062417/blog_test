@@ -3,4 +3,6 @@ class Category < ApplicationRecord
                       uniqueness: true
 
     validates :description, presence: true
+
+    has_many :tasks 
 end

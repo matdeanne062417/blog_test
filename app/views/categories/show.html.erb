@@ -1,9 +1,12 @@
 <h1><%= @category.name %></h1>
-            
+    <%= @category.description %>            
 <%# print %>
 <p class = "content">
-
-    <%= @category.description %>
+    <% @task.name %>
+    <% @task.details %>
+    <% @task.deadline %>
+    <% @task.started %>
+    <% @task.completed %>
 
 </p>
 
