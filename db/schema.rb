@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_073227) do
+ActiveRecord::Schema.define(version: 2020_12_03_081100) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 2020_12_01_073227) do
     t.date "completed_at"
     t.boolean "started"
     t.boolean "completed"
-    t.string "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "category_id"
     t.index ["category_id"], name: "index_tasks_on_category_id"
   end
 

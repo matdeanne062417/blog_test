@@ -1,5 +1,5 @@
 <h1>Edit Page</h1>
-<%= form_with scope: :category, url: update_category_path, method: :patch do |f| %>
+<%= form_with model: @category, method: :patch do |f| %>
 <p>
     <% if @category.errors.any? %>
         <ul>

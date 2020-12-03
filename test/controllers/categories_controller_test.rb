@@ -38,13 +38,13 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update category" do
-    patch update_category_url(@category), params: { category: { name: "update", description: "My Update" } }
+    patch category_url(@category), params: { category: { name: "update", description: "My Update" } }
     assert_redirected_to categories_url(@category)
   end
 
   test "should destroy category" do
     assert_difference('Category.count', -1) do
-      delete delete_category_url(@category)
+      delete category_url(@category)
     end
 
     assert_redirected_to categories_url

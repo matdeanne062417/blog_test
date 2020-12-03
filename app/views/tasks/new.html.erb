@@ -1,2 +1,42 @@
-<%= render "form" %>
+<%= form_with model: [@category, @task], local: true do |f| %>
+<p>
+  <%if @task.errors.any?%>
+    <ul>
+      <% @task.errors.full.message.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</p>
 
+<div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+</div>
+
+<div class="field">
+  <%= f.label :details %>
+  <%= f.text_area :details %>
+</div>
+
+<div class="field">
+  <%= f.label :deadline %>
+  <%= f.date_field :deadline %>
+</div>
+
+<div class="field">
+  <%= f.label :started %>
+  <%= f.check_box :started %>
+  <%= f.label :completed %>
+  <%= f.check_box :completed %>
+</div>
+
+<div>
+ <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name) %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+
+<% end %>

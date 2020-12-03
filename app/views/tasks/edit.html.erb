@@ -1,5 +1,5 @@
 <h1>Edit Page</h1>
-<%= form_with scope: :task, url: update_task_path, method: :patch do |f| %>
+<%= form_with model: [@category, @task], method: :patch do |f| %>
 <p>
     <% if @task.errors.any? %>
         <ul>
@@ -11,43 +11,36 @@
         </ul>
     <% end %>
 </p>
-
-<p>
+<div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
-</p>
+</div>
 
-<p>
-    <%= f.label :details %>
-    <%= f.text_area :details %>
-</p>
-<p>
-    <%= f.label :deadline %>
-    <%= f.datetime_field :deadline %>
-</p>
-<p>
-    <%= f.label :started_at %>
-    <%= f.date_field :started_at %>
-</p>
-<p>
-    <%= f.label :completed_at %>
-    <%= f.date_field :completed_at %>
-</p>
-<p>
-    <%= f.label :started %>
-    <%= f.check_box :started %>
-</p>
-<p>
-    <%= f.label :completed %>
-    <%= f.check_box :completed %>
-</p>
+<div class="field">
+  <%= f.label :details %>
+  <%= f.text_area :details %>
+</div>
 
-<p>
+<div class="field">
+  <%= f.label :deadline %>
+  <%= f.date_field :deadline %>
+</div>
 
-    <%= f.submit %>
+<div class="field">
+  <%= f.label :started %>
+  <%= f.check_box :started %>
+  <%= f.label :completed %>
+  <%= f.check_box :completed %>
+</div>
 
-</p>
+<div>
+ <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name) %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
 
 <% end %>
 
-<%= link_to 'Back',tasks_path %>
+

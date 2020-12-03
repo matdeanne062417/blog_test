@@ -20,8 +20,8 @@
                 <td id = "category-name"><b><%= category.name %></b></td>
                 <td id = "category-body"><%= category.description %></td>
                 <td><%= link_to 'Edit', edit_category_path(category.id) %></td>
-                <td><%= link_to 'Show',show_category_path(category.id) %></td>
-                <td><%= link_to 'Delete', delete_category_path(category.id), data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to 'Show', category_path(category.id) %></td>
+                <td><%= link_to 'Delete', category_path(category.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
         <% end %>
     </tbody>

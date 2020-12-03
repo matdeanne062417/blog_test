@@ -1,7 +1,6 @@
 class CategoriesController < ApplicationController
     def index
         @categories = Category.all
-        @tasks = Task.all
     end
 
     def show
@@ -36,7 +35,7 @@ class CategoriesController < ApplicationController
          end
     end
 
-    def delete
+    def destroy
         @category = Category.find(params[:id]).destroy
         redirect_to categories_path
     end

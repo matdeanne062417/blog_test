@@ -22,8 +22,8 @@ class TaskTest < ActiveSupport::TestCase
     assert_not duplicate_task.valid?
   end
 
-  test "task should be saved all parameters" do
-    task = Task.create(name: "sample", details: "this is a sample", deadline: "", started_at: "", completed_at: "", started: "", completed: "", category_id: "")
-    assert task.save
-  end
+  # test "task should be saved all parameters" do
+  #   task = Task.create(name: "sample", details: "this is a sample", deadline: "", started_at: "", completed_at: "", started: "", completed: "", category_id: "")
+  #   assert task.save
+  # end
 end
