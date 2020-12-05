@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     end
 
     def show
-        @task = Task.find(params[:id])
+        @task = @category.tasks.find(params[:id])
     end
 
     def new
@@ -22,12 +22,12 @@ class TasksController < ApplicationController
     end
 
     def edit
-        @task = Task.find(params[:category_id])
+        @task = @category.tasks.find(params[:id])
         
     end
 
     def update
-        @task = Task.find(params[:category_id])
+        @task = @category.tasks.find(params[:id])
         
          if @category.tasks.update(task_params)
              redirect_to category_tasks_path

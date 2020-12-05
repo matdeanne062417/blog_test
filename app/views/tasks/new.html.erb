@@ -2,7 +2,7 @@
 <p>
   <%if @task.errors.any?%>
     <ul>
-      <% @task.errors.full.message.each do |message| %>
+      <% @task.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
