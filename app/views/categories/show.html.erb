@@ -1,15 +1,46 @@
-<h1><%= @category.name %></h1>
+    
+<h1> <%= link_to @category.name, edit_category_path(@category.id) %></h1>
               
 <%# print %>
 <p class = "content">
     <%= @category.description %>
-      
-    <%= %>
-
+    <%= link_to 'Delete', category_path(@category.id), method: :delete, data: { confirm: 'Are you sure?' } %>
 </p>
+    <table class = "content">
+    <thead>
+        <tr>
+            <th><h2>Name</h2></th>
+            <th><h2>Details</h2></th>
+            <th><h2>Deadline</h2></th>
+            <th><h2>Started</h2></th>
+            <th><h2>Completed</h2></th>
+            <th><h2> </h2></th>
+            <th><h2> </h2></th>
+            <th><h2> </h2></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <%# iterate %>
+        <%@category.tasks.each do |task| %>
+            <tr>
+                <%# print %>
+                
+                <td id = "task-name"><b><%= task.name %></b></td>
+                <td id = "task-body"><%= task.details %></td>
+                <td id = "task-deadline"><%= task.deadline %></td>
+                <td id = "task-started"><%= task.started %></td>
+                <td id = "task-completed"><%= task.completed %></td>
+                <td><%= link_to 'Edit', edit_category_task_path(task.category_id,task.id) %></td>
+                <td><%= link_to 'Show',category_task_path(task.category_id,task.id) %></td>
+                <td><%= link_to 'Delete', category_task_path(task.category_id,task.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
 
 <div class = "btn-links">
-    <%= link_to 'Edit', edit_category_path(@category.id) %>
-    <%= link_to 'Delete', category_path(@category.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Add Task',new_category_task_path(@category) %>
     <%= link_to 'Back to Category',categories_path %>
 </div>

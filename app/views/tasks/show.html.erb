@@ -1,0 +1,8 @@
+<h1><%= @task.name %></h1>
+
+    <div id = "task-body"><%= @task.details %></div>
+    <div id = "task-deadline"><%= @task.deadline %></div>
+    <div id = "task-started"><%= @task.started %></div>
+    <div id = "task-completed"><%= @task.completed %></div>
+    <div><%= link_to 'Edit', edit_category_task_path(@task.category_id,@task.id) %></div>
+    <div><%= link_to 'Delete', category_task_path(@task.category_id,@task.id), method: :delete, data: { confirm: 'Are you sure?' } %></div>

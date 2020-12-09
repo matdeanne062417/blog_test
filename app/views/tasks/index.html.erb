@@ -1,4 +1,4 @@
-<h1>Tasks</h1>
+<h1><%= @category.name%></h1>
 <table class = "content">
     <thead>
         <tr>
@@ -32,3 +32,4 @@
     </tbody>
 </table>
 <%= link_to 'Add Task',new_category_task_path(@category) %>
+<%= link_to 'Back to Category',categories_path %>
