@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :categories do 
     resources :tasks
   end
+
+  root 'tasks#today'
+
   # get '/categories' => 'categories#index'
   # get '/categories/new' => 'categories#new', as: 'new_category'
   # post '/categories' => 'categories#create', as: 'create_category'
