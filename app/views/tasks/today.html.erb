@@ -11,7 +11,12 @@
         <div>
 
             <% if @tasks_incomplete.length === 0 %>
+            <div class = "media">
+                <div class = "media-body">
                 <h2>No Task for Today!</h2>
+                </div>
+                <img src="https://cdn1.iconfinder.com/data/icons/ninja-4/512/ninja_avatar_emoji_emoticon_thumbs_up_wink-512.png" alt="Thumbs Up" class="ml-3 mt-3 rounded-circle" >
+                </div>
             <% else %>
 
                 <table class = 'table'>
