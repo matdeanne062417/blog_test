@@ -1,5 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body class = "container">
 <h1>Edit Page</h1>
-<%= form_with model: @category, method: :patch do |f| %>
+<%= form_with model: @category, class: "form-group", method: :patch do |f| %>
 <p>
     <% if @category.errors.any? %>
         <ul>
@@ -12,22 +18,26 @@
     <% end %>
 </p>
 
-<p>
+<div class = "form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
-</p>
+    <%= f.text_field :name, class: "form-control" %>
+</div>
 
-<p>
+<div class = "form-group">
     <%= f.label :description %>
-    <%= f.text_area :description %>
-</p>
+    <%= f.text_area :description, class: "form-control" %>
+</div>
 
-<p>
+<div class= "form-group">
 
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary mb-2" %>
 
-</p>
+</div>
 
 <% end %>
 
-<%= link_to 'Back',categories_path %>
+<%= link_to categories_path, class: "btn btn-danger" do %>
+  <i class = 'glyphicon glyphicon-chevron-left'></i> Back
+<% end %>
+</body>
+</html>

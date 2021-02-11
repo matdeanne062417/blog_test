@@ -1,8 +1,27 @@
-<h1><%= @task.name %></h1>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<h1 class="container"><%= @task.name %></h1>
+<body>
+ <div class= "container p-3 my-3 bg-dark text-white">
+    <h3 class = "container">Details</h3>
+        <p class = "container"><%= @task.details %></p>
+    <h3 class = "container">Deadline</h3>
+        <p class = "container"><%= Time.at(@task.deadline).strftime("%B %e, %Y")%></p>
+    <h3 class = "container">Started</h3>
+        <p class = "container"><%= @task.started %></p>
+    <h3 class = "container">Completed</h3>
+        <p class = "container"><%= @task.completed %></p>
+    <%= link_to 'Edit', edit_category_task_path(@task.category_id,@task.id), class:"btn btn btn-success"%>
+    
+    <%= link_to category_task_path(@task.category_id,@task.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do %>
+        <i class = 'glyphicon glyphicon-trash'></i> Delete
+    <%end%>
 
-    <div id = "task-body"><%= @task.details %></div>
-    <div id = "task-deadline"><%= @task.deadline %></div>
-    <div id = "task-started"><%= @task.started %></div>
-    <div id = "task-completed"><%= @task.completed %></div>
-    <div><%= link_to 'Edit', edit_category_task_path(@task.category_id,@task.id) %></div>
-    <div><%= link_to 'Delete', category_task_path(@task.category_id,@task.id), method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    <%= link_to category_tasks_path, class: "btn btn-danger" do %>
+        <i class = 'glyphicon glyphicon-chevron-left'></i> Back
+    <% end %>
+ </div>
+</body>
