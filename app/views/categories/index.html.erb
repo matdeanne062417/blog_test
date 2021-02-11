@@ -1,6 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<div class = 'container'>
 <h1>Category</h1>
-<table class = "content">
-    <thead>
+<table class = "table">
+    <thead class = "thead-dark">
         <tr>
             <th><h6>ID</h6></th>
             <th><h2>Name</h2></th>
@@ -19,11 +25,19 @@
                 <td id = "category-id"><%= category.id %></td>
                 <td id = "category-name"><b><%= category.name %></b></td>
                 <td id = "category-body"><%= category.description %></td>
-                <td><%= link_to 'Edit', edit_category_path(category.id) %></td>
-                <td><%= link_to 'Show',show_category_path(category.id) %></td>
-                <td><%= link_to 'Delete', delete_category_path(category.id), data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to 'Edit', edit_category_path(category.id), class: "btn btn btn-success" %></td>
+                <td><%= link_to 'Show', category_path(category.id), class: "btn btn btn-success" %></td>
+                <td><%= link_to category_path(category.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do %>
+                    <i class = "glyphicon glyphicon-trash"></i>Delete
+                <%end%>
+                </td>
             </tr>
         <% end %>
     </tbody>
 </table>
-<%= link_to 'Create New Category',new_category_path %>
+<%= link_to root_path, class: "btn btn-danger" do %>
+    <i class = 'glyphicon glyphicon-chevron-left'></i> Home
+<% end %>
+
+<%= link_to 'Create New Category',new_category_path, class: "btn btn-success" %>
+</div>

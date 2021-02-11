@@ -1,5 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body class = "container">
 <h1>Edit Page</h1>
-<%= form_with scope: :task, url: update_task_path, method: :patch do |f| %>
+<%= form_with model: [@category, @task],class: "form-group", method: :patch do |f| %>
 <p>
     <% if @task.errors.any? %>
         <ul>
@@ -11,43 +17,42 @@
         </ul>
     <% end %>
 </p>
-
-<p>
+<div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
-</p>
+    <%= f.text_field :name, class: "form-control" %>
+</div>
 
-<p>
-    <%= f.label :details %>
-    <%= f.text_area :details %>
-</p>
-<p>
-    <%= f.label :deadline %>
-    <%= f.datetime_field :deadline %>
-</p>
-<p>
-    <%= f.label :started_at %>
-    <%= f.date_field :started_at %>
-</p>
-<p>
-    <%= f.label :completed_at %>
-    <%= f.date_field :completed_at %>
-</p>
-<p>
-    <%= f.label :started %>
-    <%= f.check_box :started %>
-</p>
-<p>
-    <%= f.label :completed %>
-    <%= f.check_box :completed %>
-</p>
+<div class="form-group">
+  <%= f.label :details %>
+  <%= f.text_area :details, class: "form-control" %>
+</div>
 
-<p>
+<div class="form-group">
+  <%= f.label :deadline %>
+  <%= f.date_field :deadline, class: "form-control" %>
+</div>
 
-    <%= f.submit %>
+<div class="form-group">
+  <%= f.label :started %>
+  <%= f.check_box :started %>
+  <%= f.label :completed %>
+  <%= f.check_box :completed %>
+</div>
 
-</p>
+<div class="form-group">
+ <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.submit class: "btn btn-primary mb-2" %>
+</div>
 
 <% end %>
 
-<%= link_to 'Back',tasks_path %>
+<%= link_to category_tasks_path, class: "btn btn-danger" do %>
+  <i class = 'glyphicon glyphicon-chevron-left'></i> Back
+<% end %>
+
+</body>
+
+

@@ -1,5 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body class = "container">
 <h1>Create New Category</h1>
-<%= form_with scope: :category, url: create_category_path, local: true do |f| %>
+<%= form_with model: @category, class: "form-group", local: true do |f| %>
 <p>
     <% if @category.errors.any? %>
         <ul id = "error_explanation">
@@ -12,22 +18,23 @@
     <% end %>
 </p>
 
-<p>
+<p class = "form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control"%>
 </p>
 
-<p>
+<p class = "form-group">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: "form-control" %>
 </p>
 
-<p>
-
-    <%= f.submit %>
-
+<p class = "form-group">
+    <%= f.submit class: "btn btn-primary mb-2" %>
 </p>
 
 <% end %>
 
-<%= link_to 'Back to Category',categories_path %>
+<%= link_to categories_path, class: "btn btn-danger" do %>
+    <i class = 'glyphicon glyphicon-chevron-left'></i> Back to Category
+<% end %>
+</body>

@@ -10,18 +10,5 @@
 # two: {}
 # column: value
 
-default: &default
-  name: Task Name
-  details: Task Details
-  category_id: 2
-
-regular:
-  <<: *default
-
-started:
-  <<: *default
-  started: true
-
-completed:
-  <<: *default
-  completed: true
+one: 
+  email: my@email.com

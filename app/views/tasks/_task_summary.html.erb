@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<div class = 'container'>
+<h1><%= @category.name%></h1>
+
+<table class = "table">
+    <thead class = "thead-dark">
+        <tr>
+            <th class = "text-center"><h2>Name</h2></th>
+            <th class = "text-center"><h2>Details</h2></th>
+            <th class = "text-center"><h2>Deadline</h2></th>
+            <th class = "text-center"><h2>Started</h2></th>
+            <th class = "text-center"><h2>Completed</h2></th>
+            <th><h2> </h2></th>
+            <th><h2> </h2></th>
+            <th><h2> </h2></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <%# iterate %>
+        <%@category.tasks.each do |task| %>
+            <tr>
+                <%# print %>
+                
+                <td class = "text-center"><b><%= task.name %></b></td>
+                <td class = "text-center"><%= task.details %></td>
+                <td class = "text-center"><%= Time.at(task.deadline).strftime("%B %e, %Y at %I:%M %p")  %></td>
+                <% if task.started === true %>
+                <td class = 'text-center'><i class = 'glyphicon glyphicon-ok'>
+                </i></td>
+                <% else %>
+                <td class = 'text-center'><i class = 'glyphicon glyphicon-remove'></i></td>
+                <% end %>
+                <% if task.completed === true %>
+                <td class = 'text-center'><i class = 'glyphicon glyphicon-ok'>
+                </i></td>
+                <% else %>
+                <td class = 'text-center'><i class = 'glyphicon glyphicon-remove'></i></td>
+                <% end %>
+                <td><%= link_to 'Edit', edit_category_task_path(task.category_id,task.id), class:"btn btn btn-success" %></td>
+                <td><%= link_to 'Show',category_task_path(task.category_id,task.id), class:"btn btn btn-success" %></td>
+                <td><%= link_to category_task_path(task.category_id,task.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do %>
+                    <i class = "glyphicon glyphicon-trash"></i>Delete
+                <%end%>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+
+<%= link_to categories_path, class: "btn btn-danger" do %>
+    <i class = 'glyphicon glyphicon-chevron-left'></i> Back to Category
+<% end %>
+
+<%= link_to 'Add Task',new_category_task_path(@category), class: "btn btn-danger" %>
+</div>

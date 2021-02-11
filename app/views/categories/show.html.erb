@@ -1,17 +1,1 @@
-<h1><%= @category.name %></h1>
-    <%= @category.description %>            
-<%# print %>
-<p class = "content">
-    <% @task.name %>
-    <% @task.details %>
-    <% @task.deadline %>
-    <% @task.started %>
-    <% @task.completed %>
-
-</p>
-
-<div class = "btn-links">
-    <%= link_to 'Edit', edit_category_path(@category.id) %>
-    <%= link_to 'Delete', delete_category_path(@category.id), data: { confirm: 'Are you sure?' } %>
-    <%= link_to 'Back to Category',categories_path %>
-</div>
+<%= render 'tasks/task_summary'%>
